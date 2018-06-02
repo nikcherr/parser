@@ -26,4 +26,20 @@ class StringParser {
         }
         return false;
     }
+    
+    public function tagParser(string $url, string $tag): array {
+        
+        $htmlPage = file_get_contents($url);
+        if(false === $htmlPage){
+            return ['Invalid Url'];
+        }
+        
+        preg_match_all('/<' . $tag . '.*?>(.*?)<\/' . $tag . '>/s', $htmlPage, $strings);
+        
+        if(empty($strings[1])){
+            return ['There are no such tags on the page'];
+        }
+        
+        return $strings[1];
+    }
 }
