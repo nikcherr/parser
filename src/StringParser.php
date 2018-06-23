@@ -9,7 +9,7 @@ class StringParser {
         $left = 0;
         $right = 0;
         if(preg_match("/^[^(]*\)|[^() \t\n\r]/", $string)){
-            throw new \InvalidArgumentException("Invalid argument\n");
+            throw new \InvalidArgumentException("Invalid argument.");
         }
         else{
             for($i = 0; $i < $len; $i++){
